@@ -1,10 +1,10 @@
-pragma solidity ^0.4.19; 
+pragma solidity ^0.4.23; 
 
 contract HelloContract {
     mapping(bytes32 => uint) private votes;
     mapping(string => bytes32) private candidates;
 
-    function getCandidateHash(string candidateName) external view returns(bytes32 cadidateHash) {
+    function getCandidateHash(string candidateName) external view returns(bytes32 candidateHash) {
         if (bytes(candidateName).length > 0) {
             return candidates[candidateName];
         }
@@ -26,7 +26,7 @@ contract HelloContract {
         }
 
         // raise an event we can filter by our address, return
-        candidateAdded(msg.sender, success);
+        emit candidateAdded(msg.sender, success);
         return success;
         
     }
